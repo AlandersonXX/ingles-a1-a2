@@ -1,4 +1,4 @@
-import ProgressBar from "./components/ProgressBar";
+import ProgressBar from "./Components/ProgressBar";
 import React from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import Lesson1 from "./pages/Lesson1";
