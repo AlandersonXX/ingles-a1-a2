@@ -1,58 +1,28 @@
+import React from "react";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
-import { useState } from 'react';
-import './App.css';
-
-const weeks = [
-  'Semana 1', 'Semana 2', 'Semana 3', 'Semana 4',
-  'Semana 5', 'Semana 6', 'Semana 7', 'Semana 8',
-  'Semana 9', 'Semana 10', 'Semana 11', 'Semana 12',
-];
-
-const initialProgress = weeks.reduce((acc, week) => {
-  acc[week] = false;
-  return acc;
-}, {});
+import Home from "./pages/Home";
+import Lesson1 from "./pages/Lesson1";
+// importe outras lições que criar...
 
 function App() {
-  const [progress, setProgress] = useState(initialProgress);
-  const [notes, setNotes] = useState('');
-
-  const toggleWeek = (week) => {
-    setProgress({ ...progress, [week]: !progress[week] });
-  };
-
-  const completed = Object.values(progress).filter(Boolean).length;
-
   return (
-    <div className="container">
-      <h1>Inglês para Alanderson: Do A1 ao A2</h1>
-      <p>Plano de 12 semanas para sair do nível A1 com fluência básica</p>
+    <Router>
+      <nav style={{ padding: "1rem", background: "#eee" }}>
+        <Link to="/" style={{ marginRight: "1rem" }}>Home</Link>
+        <Link to="/lesson1">Lição 1</Link>
+        {/* Adicione links para outras lições */}
+      </nav>
 
-      <div className="card">
-        <h2>Progresso Semanal</h2>
-        <ul>
-          {weeks.map((week) => (
-            <li key={week}>
-              <span>{week}</span>
-              <button onClick={() => toggleWeek(week)}>
-                {progress[week] ? 'Concluído' : 'Marcar como feito'}
-              </button>
-            </li>
-          ))}
-        </ul>
-        <p>{completed} de 12 semanas concluídas ({Math.round((completed / 12) * 100)}%)</p>
-      </div>
-
-      <div className="card">
-        <h2>Minhas Anotações</h2>
-        <textarea
-          placeholder="Escreva aqui frases, vocabulário, dúvidas, etc."
-          value={notes}
-          onChange={(e) => setNotes(e.target.value)}
-        />
-      </div>
-    </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/lesson1" element={<Lesson1 />} />
+        {/* Adicione rotas para outras lições */}
+      </Routes>
+    </Router>
   );
 }
 
 export default App;
+
+
