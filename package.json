@@ -1,4 +1,3 @@
-
 {
   "name": "ingles-alanderson",
   "version": "1.0.0",
@@ -9,6 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@vitejs/plugin-react": "^4.5.2",
     "react": "^18.0.0",
     "react-dom": "^18.0.0"
   },
